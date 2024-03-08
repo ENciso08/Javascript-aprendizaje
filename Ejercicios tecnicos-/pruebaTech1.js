@@ -10,25 +10,12 @@
 
 // 1) Programa una función que cuente el número de caracteres de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá 10.
 
-// llamamos la funcion con un for loop , esta nos cuenta y recorre cada elemento del arreglo
-  // let input = "Hello World";
+const funcionSimple = (cadena ="")=>{ 
+ // Validamos el codigo de tal manera que nos arroje una informacion siendo true or false
+//  agregamos length para contar la longitud del string y asi poder arrojar el numero que la conforma
+(!cadena)? console.log("No data entered"): console.info(`La cadena ${cadena} tiene } ${cadena.length} Caracteres`);
+}
 
-  // function miFuncion(input) {
-  //   for (let i = 0; i < input.length; i++) {
-  //       console.log([i]);  
-        
-  //   }
-  // }
-  // miFuncion(input)
-  
-  // Simplificamos la funcion con un arrow function y el operador ternario ? ,.,simplificando if else.. 
-  
-  // ways to look a goog typing code s
-const funcionSimple = (cadena ="")=> 
-(!cadena)
-  ? console.log("No data entered")
-  : console.info(`La cadena ${cadena} tiene 
-  ${cadena.length} Caracteres`);
 
 funcionSimple("Soy el mejor")
 funcionSimple("")
@@ -44,18 +31,20 @@ funcionSimple("")
   //2)Programa una función que te devuelva el texto recortado según el número de caracteres indicados, 
 // pe. miFuncion("Hola Mundo", 4) devolverá "Hola".
 
+  const recortarText = (cadena ="",longitud = undefined) => {
 
-// usamos el metodo .slice(), nos devuelve una pequeña pero profunda copia del origianal en JS se le conoce como
-// Start and end represent the index of items
-
-
-  const recortarText = (cadena ="",longitud = undefined) => 
+   // Validamos el codigo de tal manera que nos arroje una informacion siendo true or false
    (!cadena)
    ?console.warn("no text added on, pls submit again.")
    :(longitud === undefined)
-   ?console.log("no length added")
-   :console.log(cadena.slice(0,longitud));
+   ?console.log("no length added")  
 
+// usamos el metodo .slice(), nos devuelve una pequeña pero profunda copia del origianal en JS se le conoce como
+// Start and end represent the index of items
+   :console.log(cadena.slice(0,longitud));}
+
+
+   
    recortarText("Hello World",5)
     recortarText()
     recortarText("Enciso")
@@ -74,14 +63,17 @@ funcionSimple("")
         //  por cierto caracter, pe. miFuncion('hola que tal', ' ') devolverá ['hola', 'que', 'tal'].
 
 
-
-
     const cadenaFix = (cadena ="",separador = undefined) => 
+     {       // Validamos el codigo de tal manera que nos arroje una informacion siendo true or false
          (!cadena)
          ? console.warn("No data entered")
          :(separador = undefined )
          ?console.warn("no entry")
+        //  agregamos un metodo, el metodo split, el cual nos separa de un array y divide el objeto de tal manera que este hara su separacion a traves de la cadena en subcadenas
+      
          :console.info(cadena.split(separador));
+        
+        }
 
         
          cadenaFix("en,feb,mar,apl,may,jun",",");
@@ -92,16 +84,11 @@ funcionSimple("")
 
 
 
-
-
-
-
-
-
-
     // 4) Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) devolverá Hola Mundo Hola Mundo Hola Mundo.}
 
-       const repeatText = (text ="",veces = undefined)=> {if (!text) return console.log("No data")
+       const repeatText = (text ="",veces = undefined)=> {
+        // Validamos el codigo de tal manera que nos arroje una informacion siendo true or false
+      if (!text) return console.log("No data")
     ;
     if(veces === undefined) return console.warn("not entered a valid text")
     ;
@@ -109,6 +96,7 @@ funcionSimple("")
     if(veces === 0) return console.log("not 0 allowed");
 
     if(Math.sign(veces)===-1) return console.log("number cant be negative ");
+    // creamos un for loop para poder recorrer el arreglo y asi poder repetir la funcion X cantidad de veces
 
     for(let i= 1; i <= veces;i++) console.log(`${text},${i}`);
   
