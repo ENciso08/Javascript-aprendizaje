@@ -81,22 +81,27 @@ input(350.000,50)
 //  pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020). */
 
 const calculateYear = (fecha = undefined ) =>{
-    
+    // validamos que nos de la informacion que requerimos 
+
     if(fecha === undefined) return console.log("Invalid DateType.");
 
     // Vamos a validar con el operador instanceOf, el cual nos ayuuda a validar las instancias o prototype
+        // el obj Date representa un momento fijo en el tiempo, desde l 1 de Enero de 1970 UTC
     if(!(fecha instanceof Date)) return console.log("Invalid Date added");
 
     // Function 
 
+    // getTime() devuelve el valor numérico correspondiente a la hora para la fecha especificada según la hora universal.
     // Aqui se creo la variable en milisegundos
     let newDate =new Date().getTime() - fecha.getTime()
+    
     // crear variable con el tiempo que deseamos expresar ( esta expresado en un dia , segundos, minutos, hora, dia, y año)
     yearMS= 1000 * 60 * 60 * 24 * 365
     yearHumans = Math.floor(newDate/yearMS);
 
 
     return (Math.sign(yearHumans)===-1) 
+    // math.abs() El valor absoluto del número dado.
     ? console.info(`falta ${Math.abs(yearHumans)} años para el ${fecha.getFullYear()}.`)
     :(Math.sign(yearHumans)===1) 
     ? console.info(`Han pasado ${yearHumans} años , desde ${fecha.getFullYear()}`)
