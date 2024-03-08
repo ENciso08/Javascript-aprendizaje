@@ -19,6 +19,8 @@ const elevadoAlCuadrado = (arr = undefined)=>{
         if(typeof num !=="number") return console.log(`el valor ${num} no es un numero valido`);;
     }
 
+    // para crear dichoa array elevado al cuadrado creamos un metodo map() el cual crea 
+    // un nuevo array con los resultados de la llamada a la función indicada aplicados a cada uno de sus elementos.
     const newArr = arr.map(el => el *el);
 
     return console.log(`El arreglo original ${arr}.\nArreglo elevado al cuadrado ${newArr}`);
@@ -27,9 +29,9 @@ const elevadoAlCuadrado = (arr = undefined)=>{
 }
 // output
 
-elevadoAlCuadrado([])
-elevadoAlCuadrado([""])
-elevadoAlCuadrado([60,20])
+// elevadoAlCuadrado([])
+// elevadoAlCuadrado([""])
+// elevadoAlCuadrado([60,20])
 
 
 
@@ -59,6 +61,9 @@ const numeroMasAltoAlMasBajo =(arr = undefined)=>{
         if(typeof num !=="number") return console.log(`el valor ${num} no es un numero valido`);;
     }
 
+    // validamos que el array nos de el numero deseado usando math.max() el cual nos dara un numero max de un array 
+    // y tambien math.min() que devuelve el numero menor de un array , sin antes agregar el spread operator "..." dado que sin este operador
+    // el resultado sera NaN
 
     console.log(`Arreglo Original: ${arr}.\n Valor Mayor: ${Math.max(...arr)}.\nValor Menor : ${Math.min(...arr)}`);
 
@@ -102,7 +107,7 @@ const paresEImpares = (arr = undefined) => {
 }
 // output
 
-paresEImpares()
-paresEImpares(false)
-paresEImpares([true])
-paresEImpares([20,10,7,9,1,9,])
+// paresEImpares()
+// paresEImpares(false)
+// paresEImpares([true])
+// paresEImpares([20,10,7,9,1,9,])
