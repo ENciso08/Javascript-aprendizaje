@@ -18,22 +18,23 @@
 // pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5. 
 
 const contarVocalesYConsonantes = (cadena ="") => {
+    // validamos el codigo con if y typeof 
     if(!cadena) return console.info("El campo está vacío, ingresa una frase");
     if(typeof cadena !=="string") return console.info(`El valor "${cadena}" no es una cadena de text, ingresa la informacion de nuevo, porfavor.`);
     
-
+// .split() divide el objeto en un array mediante la separacion de subcadenas
 cadena.split()
 
 // declaramos los contadores 
 let vocales = 0,
  consonantes =0;
 
-// regEx la cual nos ayudara a indentificar si es una vocal o no
+// regEx la cual nos ayudara a indentificar si es una vocal o no, agregamos test() para identificar que el regExp funcione
     let regExvocal =/[aeiouáéíóú]/gi.test(cadena)
 
     cadena = cadena.toLocaleLowerCase()
 
-    // iteramos sobre cada caracter
+    // iteramos sobre cada caracter con un for loop
 
     for ( let caracter of cadena){
         if (regExvocal.test(caracter)) {
