@@ -1,34 +1,7 @@
-/*21) Programa una función que dado un array numérico devuelve otro array con los números elevados al cuadrado, pe. mi_funcion([1, 4, 5]) devolverá [1, 16, 25].
-22) Programa una función que dado un array devuelva el número mas alto y el más bajo de dicho array, pe. miFuncion([1, 4, 5, 99, -60]) devolverá [99, -60].
-23) Programa una función que dado un array de números devuelva un objeto con 2 arreglos en el primero almacena los números pares y en el segundo los impares, pe. miFuncion([1,2,3,4,5,6,7,8,9,0]) devolverá {pares: [2,4,6,8,0], impares: [1,3,5,7,9]}.*/
-
-
-// /*21) Programa una función que dado un array numérico devuelve otro array con los números elevados al cuadrado,
-//  pe. mi_funcion([1, 4, 5]) devolverá [1, 16, 25].
-
-
-
-const elevadoAlCuadrado = (arr = undefined)=>{
-    // validation of the code
-    if(arr === undefined || arr.length === 0 ) return console.log("El arreglo esta vacio. No ingresaste un Array de numeros");
-    if(!(arr instanceof Array)) return console.log("El valor ingresado no es un arreglo");
-   
-    // function for Of, nos ayuda a validar solo numeros
-
-    for (const num of arr) {
-        if(typeof num !=="number") return console.log(`el valor ${num} no es un numero valido`);;
-    }
-
-    const newArr = arr.map(el => el *el);
-
-    return console.log(`El arreglo original ${arr}.\nArreglo elevado al cuadrado ${newArr}`);
-
-
-}
-
-// elevadoAlCuadrado([])
-// elevadoAlCuadrado([""])
-// elevadoAlCuadrado([60,20])
+/*4) Programa una función que dado un arreglo de números devuelva un objeto con dos arreglos, el primero tendrá los numeros ordenados en forma ascendente y el segundo de forma descendiente, pe. miFuncion([7, 5,7,8,6]) devolverá { asc: [5,6,7,7,8], desc: [8,7,7,6,5] }.
+25) Programa una función que dado un arreglo de elementos, elimine los duplicados, pe. miFuncion(["x", 10, "x", 2, "10", 10, true, true]) devolverá ["x", 10, 2, "10", true].
+26) Programa una función que dado un arreglo de números obtenga el promedio, pe. promedio([9,8,7,6,5,4,3,2,1,0]) devolverá 4.5.
+*/ 
 
 
 
@@ -37,69 +10,62 @@ const elevadoAlCuadrado = (arr = undefined)=>{
 
 
 
+/*Programa una función que dado un arreglo de números devuelva un objeto con dos arreglos,
+ el primero tendrá los numeros ordenados en forma ascendente y el segundo de forma descendiente,
+  pe. miFuncion([7, 5,7,8,6]) devolverá { asc: [5,6,7,7,8], desc: [8,7,7,6,5] }.
+*/ 
+
+    const ascendenteYdescendente =(arr = undefined)=>{
+        // Validations
+        if(arr === undefined || arr.length === 0 ) return console.log("El arreglo esta vacio. No ingresaste un Array de numeros");
+        if(!(arr instanceof Array)) return console.log("El valor ingresado no es un arreglo");
+       
+        // Validation in fuction, to check if the information is array or not 
+        for (const num of arr) {
+            if(typeof num !=="number") return console.log(`el valor ${num} no es un Array valido`);;
+        }
+        
+        // Function ascendent and descendt
 
 
+        const ascendent = arr.slice().sort((a,b)=> a-b);
+        const descendt = arr.slice().sort((a,b)=> b-a);
 
-
-
-
-// 22) Programa una función que dado un array devuelva el número mas alto y el más bajo de dicho array,
-// pe. miFuncion([1, 4, 5, 99, -60]) devolverá [99, -60].
- 
-const numeroMasAltoAlMasBajo =(arr = undefined)=>{
-
-    // validaciones con if 
-    if(arr === undefined || arr.length === 0 ) return console.log("El arreglo esta vacio. No ingresaste un Array de numeros");
-    if(!(arr instanceof Array)) return console.log("El valor ingresado no es un arreglo");
-   
-    // function for Of, nos ayuda a validar solo numeros
-
-    for (const num of arr) {
-        if(typeof num !=="number") return console.log(`el valor ${num} no es un numero valido`);;
-    }
-
-
-    console.log(`Arreglo Original: ${arr}.\n Valor Mayor: ${Math.max(...arr)}.\nValor Menor : ${Math.min(...arr)}`);
+        return console.log({"Ascendent" : ascendent,"Descendt" : descendt})
 
         
-}
+    }
 
-
-// numeroMasAltoAlMasBajo()
-// numeroMasAltoAlMasBajo(false)
-// numeroMasAltoAlMasBajo([])
-// numeroMasAltoAlMasBajo([1, 4, 5, 99, -60])
-
-
+    // ascendenteYdescendente([])
+    // ascendenteYdescendente([""])
+    // ascendenteYdescendente([true])
+    // ascendenteYdescendente([1,2,3,4,5])
 
 
 
 
-// 23) Programa una función que dado un array de números devuelva un objeto con 2 arreglos en el primero almacena los números pares y en el segundo los impares,
-//  pe. miFuncion([1,2,3,4,5,6,7,8,9,0]) devolverá {pares: [2,4,6,8,0], impares: [1,3,5,7,9]}.*/
+// 25) Programa una función que dado un arreglo de elementos, elimine los duplicados, 
+// pe. miFuncion(["x", 10, "x", 2, "10", 10, true, true]) devolverá ["x", 10, 2, "10", true].
 
 
-const paresEImpares = (arr = undefined) => {
-      // validaciones con if 
-      if(arr === undefined || arr.length === 0 ) return console.log("El arreglo esta vacio. No ingresaste un Array de numeros");
-      if(!(arr instanceof Array)) return console.log("El valor ingresado no es un arreglo");
-     
-      // function for Of, nos ayuda a validar solo numeros
-  
-      for (const num of arr) {
-          if(typeof num !=="number") return console.log(`el valor ${num} no es un numero valido`);;
-      }
+const borrarDuplicado = (arr = undefined) =>{
+          // Validations
+          if(arr === undefined || arr.length === 0 ) return console.log("El arreglo esta vacio. No ingresaste un Array de numeros");
+          if(!(arr instanceof Array)) return console.log("El valor ingresado no es un arreglo");
 
+          
+          // function sin duplicados con el objeto Set, este nos dara la igualdad de valores
+        const sinDuplicado = new Set(arr)
+        const sinDuplicadoArr = Array.from(sinDuplicado);
 
-    //Function parEimpar, para calcular se debe dividir entre dos y que el modulo de este sea 0 (par) en caso contrario debe ser el modulo igual a 1 (impar)
-      return console.log({
-        pares: arr.filter(num => num % 2 === 0),
-        impares: arr.filter(num => num % 2 === 1)
-        })
+        return console.log(`El valor\ "${arr}" \es igual a\ "${sinDuplicadoArr}"`);
+
+            
+
 
 }
 
-paresEImpares()
-paresEImpares(false)
-paresEImpares([true])
-paresEImpares([20,10,7,9,1,9,])
+        borrarDuplicado([]);
+        borrarDuplicado(2);
+        borrarDuplicado([2]);
+        borrarDuplicado(["x", 10, "x", 2, "10", 10, true, true])

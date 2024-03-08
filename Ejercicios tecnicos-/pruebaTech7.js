@@ -1,115 +1,108 @@
-/**
- *18) Programa una función que dada una cadena de texto cuente el número de vocales y consonantes, pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5.
-19) Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero.
-20) Programa una función que valide que un texto sea un email válido, pe. miFuncion("jonmircha@gmail.com") devolverá verdadero. 
- 
- **/ 
+/*21) Programa una función que dado un array numérico devuelve otro array con los números elevados al cuadrado, pe. mi_funcion([1, 4, 5]) devolverá [1, 16, 25].
+22) Programa una función que dado un array devuelva el número mas alto y el más bajo de dicho array, pe. miFuncion([1, 4, 5, 99, -60]) devolverá [99, -60].
+23) Programa una función que dado un array de números devuelva un objeto con 2 arreglos en el primero almacena los números pares y en el segundo los impares, pe. miFuncion([1,2,3,4,5,6,7,8,9,0]) devolverá {pares: [2,4,6,8,0], impares: [1,3,5,7,9]}.*/
+
+
+// /*21) Programa una función que dado un array numérico devuelve otro array con los números elevados al cuadrado,
+//  pe. mi_funcion([1, 4, 5]) devolverá [1, 16, 25].
 
 
 
+const elevadoAlCuadrado = (arr = undefined)=>{
+    // validation of the code
+    if(arr === undefined || arr.length === 0 ) return console.log("El arreglo esta vacio. No ingresaste un Array de numeros");
+    if(!(arr instanceof Array)) return console.log("El valor ingresado no es un arreglo");
+   
+    // function for Of, nos ayuda a validar solo numeros
 
-
-
-
-
-
-
-//  *18) Programa una función que dada una cadena de texto cuente el número de vocales y consonantes, 
-// pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5. 
-
-const contarVocalesYConsonantes = (cadena ="") => {
-    if(!cadena) return console.info("El campo está vacío, ingresa una frase");
-    if(typeof cadena !=="string") return console.info(`El valor "${cadena}" no es una cadena de text, ingresa la informacion de nuevo, porfavor.`);
-    
-
-cadena.split()
-
-// declaramos los contadores 
-let vocales = 0,
- consonantes =0;
-
-// regEx la cual nos ayudara a indentificar si es una vocal o no
-    let regExvocal =/[aeiouáéíóú]/gi.test(cadena)
-
-    cadena = cadena.toLocaleLowerCase()
-
-    // iteramos sobre cada caracter
-
-    for ( let caracter of cadena){
-        if (regExvocal.test(caracter)) {
-            vocales++
-        } else if( caracter=> 'a' && caracter <= 'z')
-        // verificamos si es una consonante (caracter)
-        consonantes++
+    for (const num of arr) {
+        if(typeof num !=="number") return console.log(`el valor ${num} no es un numero valido`);;
     }
-    
-// Retornamos un objeto, el cual nos brinda una visual mas clara de lo que hicimos en el codigo. 
-    return console.log({
-        "oracion":cadena ,
-        "cantidad de vocales":vocales,
-        "cantidad de consonantes":consonantes
-    });
+
+    const newArr = arr.map(el => el *el);
+
+    return console.log(`El arreglo original ${arr}.\nArreglo elevado al cuadrado ${newArr}`);
+
+
 }
+// output
+
+elevadoAlCuadrado([])
+elevadoAlCuadrado([""])
+elevadoAlCuadrado([60,20])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 22) Programa una función que dado un array devuelva el número mas alto y el más bajo de dicho array,
+// pe. miFuncion([1, 4, 5, 99, -60]) devolverá [99, -60].
+ 
+const numeroMasAltoAlMasBajo =(arr = undefined)=>{
+
+    // validaciones con if 
+    if(arr === undefined || arr.length === 0 ) return console.log("El arreglo esta vacio. No ingresaste un Array de numeros");
+    if(!(arr instanceof Array)) return console.log("El valor ingresado no es un arreglo");
+   
+    // function for Of, nos ayuda a validar solo numeros
+
+    for (const num of arr) {
+        if(typeof num !=="number") return console.log(`el valor ${num} no es un numero valido`);;
+    }
+
+
+    console.log(`Arreglo Original: ${arr}.\n Valor Mayor: ${Math.max(...arr)}.\nValor Menor : ${Math.min(...arr)}`);
+
+        
+}
+
+// output
+
+numeroMasAltoAlMasBajo()
+numeroMasAltoAlMasBajo(false)
+numeroMasAltoAlMasBajo([])
+numeroMasAltoAlMasBajo([1, 4, 5, 99, -60])
+
+
+
+
+
+
+// 23) Programa una función que dado un array de números devuelva un objeto con 2 arreglos en el primero almacena los números pares y en el segundo los impares,
+//  pe. miFuncion([1,2,3,4,5,6,7,8,9,0]) devolverá {pares: [2,4,6,8,0], impares: [1,3,5,7,9]}.*/
+
+
+const paresEImpares = (arr = undefined) => {
+      // validaciones con if 
+      if(arr === undefined || arr.length === 0 ) return console.log("El arreglo esta vacio. No ingresaste un Array de numeros");
+      if(!(arr instanceof Array)) return console.log("El valor ingresado no es un arreglo");
+     
+      // function for Of, nos ayuda a validar solo numeros
   
-
-// contarVocalesYConsonantes("Soy La MONDA, y yo se que puedo hacer las cosas")
-
-
-
+      for (const num of arr) {
+          if(typeof num !=="number") return console.log(`el valor ${num} no es un numero valido`);;
+      }
 
 
-
-// 19) Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero.
-
-const nombreReal = (nombre ="")=>{
-    if(!nombre) return console.info("El campo está vacío, ingresa una frase");
-    if(typeof nombre !=="string") return console.info(`El valor "${nombre}" no es una cadena de text, ingresa la informacion de nuevo, porfavor.`);
-                 
-    let regExNombre = /^[a-zA-ZÑñÀaeiouáéíóúü\s']+$/g.test(nombre); 
-
-    return (regExNombre)?console.log(`${nombre} es un nombre valido. `):console.log(`${nombre} NO es un nombre valido.`);
+    //Function parEimpar, para calcular se debe dividir entre dos y que el modulo de este sea 0 (par) en caso contrario debe ser el modulo igual a 1 (impar)
+      return console.log({
+        pares: arr.filter(num => num % 2 === 0),
+        impares: arr.filter(num => num % 2 === 1)
+        })
 
 }
-    
-// nombreReal("")
-// nombreReal("michael oñate,tiene 19.")
-// nombreReal("michael oñate")
+// output
 
-
-
-// 20) Programa una función que valide que un texto sea un email válido, pe. miFuncion("jonmircha@gmail.com") devolverá verdadero. 
-
-const emailValido = (email ="")=>{
-if(!email) return console.info("El campo está vacío, ingresa una frase");
-if(typeof email !=="string") return console.info(`El valor "${email}" no es una cadena de text, ingresa la informacion de nuevo, porfavor.`);
-
-
-const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i.test(email)
-
-return (regex) ?console.log(`${email} es un email valido`):console.log(`${email} NO es un email valido`);
-}
-
-// emailValido("joelenciso08@outlook.com")
-// emailValido("joel,enciso08@outlook.co")
-// emailValido("joElenciso08@outlook.co")
-
-
-
-
-
-// Combinando nombre y Email ejercicio
-
-const validarPatron =(cadena ="" , patron ="")=>{
-    if(!cadena) return console.info("El campo está vacío, ingresa una frase");
-    if(typeof cadena !=="string") return console.info(`El valor "${cadena}" no es una cadena de text, ingresa la informacion de nuevo, porfavor.`);
-   
-    if(patron === undefined) return console.info("El campo está vacío, ingresa una frase");
-    if(!(patron instanceof RegExp)) return console.info(`El valor "${patron}" no es una cadena de texto, ingresa la informacion de nuevo, porfavor.`);
-   
-        const regEx = patron.test(cadena)
-            return (regEx) ? console.log(`${cadena} cumple con el patron ingresado`):console.log(`${cadena} No cumple con el patron ingresado.`);
-
-}
-
-validarPatron("joel Enciso", /^[a-zA-ZÑñÀaeiouáéíóúü\s']+$/g)
-validarPatron("joelenciso@gmail.com",/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i)
+paresEImpares()
+paresEImpares(false)
+paresEImpares([true])
+paresEImpares([20,10,7,9,1,9,])

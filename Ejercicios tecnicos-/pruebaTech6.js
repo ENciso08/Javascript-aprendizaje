@@ -1,109 +1,115 @@
 /**
-15) Programa una función para convertir números de base binaria a decimal y viceversa, pe. miFuncion(100,2) devolverá 4 base 10.
-16) Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800.
-17) Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020). */
-
-
-// Programa una función para convertir números de base binaria a decimal y viceversa, pe. miFuncion(100,2) devolverá 4 base 10.
-
-const binarioaDecimal = (numero = undefined,base = undefined) => {
-    if(numero === undefined) return console.error("El numero Binario ingresado No es valido, Ingreselo de nuevo.");    
-
-    if(typeof numero !== "number") return console.error(`El Numero binario "${numero}" No es valido, Ingreselo de nuevo.`);  
-    if(base === undefined) return console.error("La base no esta definida, Ingreselo de nuevo.");    
-
-    if(typeof base !== "number") return console.error(`la Base "${base}" No es valido, ingreselo de nuevo`);
-
-// Function binaria 
-// if (base !== 2 && base !== 10) {
-//     console.error("La base ingresada no es válida. Por favor, ingresa 2 para binario o 10 para decimal.");
-//     return;
-// }
-
-if (base === 2) {
-    console.info(`El número ${numero} base ${base} = ${parseInt(numero, base)} base 10`);
-}else if(base === 10){
-    console.info(`El número ${base} base ${numero} = ${numero.toString(base)} base 2`);
-}
-}
-binarioaDecimal()
-binarioaDecimal("2");
-binarioaDecimal(100)
-binarioaDecimal(100,"2")
-binarioaDecimal(100,2)
-binarioaDecimal(20,10)
+ *18) Programa una función que dada una cadena de texto cuente el número de vocales y consonantes, pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5.
+19) Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero.
+20) Programa una función que valide que un texto sea un email válido, pe. miFuncion("jonmircha@gmail.com") devolverá verdadero. 
+ 
+ **/ 
 
 
 
 
 
 
-// Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada,
-//  pe. miFuncion(1000, 20) devolverá 800.
 
-const input = (monto = undefined , descuento = 0) => {
+
+
+
+//  *18) Programa una función que dada una cadena de texto cuente el número de vocales y consonantes, 
+// pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5. 
+
+const contarVocalesYConsonantes = (cadena ="") => {
+    if(!cadena) return console.info("El campo está vacío, ingresa una frase");
+    if(typeof cadena !=="string") return console.info(`El valor "${cadena}" no es una cadena de text, ingresa la informacion de nuevo, porfavor.`);
     
-    // Validations
 
-if(monto === undefined) return console.error("El monto No es valido, Ingreselo de nuevo.");    
+cadena.split()
 
-if(typeof monto !== "number") return console.error(`El monto "${monto}" No es valido, Ingreselo de nuevo.`);    
+// declaramos los contadores 
+let vocales = 0,
+ consonantes =0;
 
-if(monto === 0) return console.error("no puede ser 0 el monto");
+// regEx la cual nos ayudara a indentificar si es una vocal o no
+    let regExvocal =/[aeiouáéíóú]/gi.test(cadena)
 
+    cadena = cadena.toLocaleLowerCase()
 
-if(Math.sign(monto) === -1) return console.error("No puede se negativo el monto, ingrese uno nuevo");
+    // iteramos sobre cada caracter
 
-if(typeof descuento !== "number") return console.error(`El valor ${descuento} NO ES NUMERO Ingresa de nuevo`);
-
-
-
-    // Funcion descuento
-    return console.log(`${monto} - ${descuento} % = ${(monto*descuento)/100}`);
-}
-
-input()
-input("200")
-input(0)
-input(-1)
-input(10,"2")
-input(35)
-input(350.000,50)
-
-
-
-
-
-
-
-
-// Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy,
-//  pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020). */
-
-const calculateYear = (fecha = undefined ) =>{
+    for ( let caracter of cadena){
+        if (regExvocal.test(caracter)) {
+            vocales++
+        } else if( caracter=> 'a' && caracter <= 'z')
+        // verificamos si es una consonante (caracter)
+        consonantes++
+    }
     
-    if(fecha === undefined) return console.log("Invalid DateType.");
+// Retornamos un objeto, el cual nos brinda una visual mas clara de lo que hicimos en el codigo. 
+    return console.log({
+        "oracion":cadena ,
+        "cantidad de vocales":vocales,
+        "cantidad de consonantes":consonantes
+    });
+}
+  
 
-    // Vamos a validar con el operador instanceOf, el cual nos ayuuda a validar las instancias o prototype
-    if(!(fecha instanceof Date)) return console.log("Invalid Date added");
-
-    // Function 
-
-    // Aqui se creo la variable en milisegundos
-    let newDate =new Date().getTime() - fecha.getTime()
-    // crear variable con el tiempo que deseamos expresar ( esta expresado en un dia , segundos, minutos, hora, dia, y año)
-    yearMS= 1000 * 60 * 60 * 24 * 365
-    yearHumans = Math.floor(newDate/yearMS);
+// contarVocalesYConsonantes("Soy La MONDA, y yo se que puedo hacer las cosas")
 
 
-    return (Math.sign(yearHumans)===-1) 
-    ? console.info(`falta ${Math.abs(yearHumans)} años para el ${fecha.getFullYear()}.`)
-    :(Math.sign(yearHumans)===1) 
-    ? console.info(`Han pasado ${yearHumans} años , desde ${fecha.getFullYear()}`)
-    :console.info(`NO hay diferencias, estamos en el año actual ${fecha.getFullYear()}`);
+
+
+
+
+// 19) Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero.
+
+const nombreReal = (nombre ="")=>{
+    if(!nombre) return console.info("El campo está vacío, ingresa una frase");
+    if(typeof nombre !=="string") return console.info(`El valor "${nombre}" no es una cadena de text, ingresa la informacion de nuevo, porfavor.`);
+                 
+    let regExNombre = /^[a-zA-ZÑñÀaeiouáéíóúü\s']+$/g.test(nombre); 
+
+    return (regExNombre)?console.log(`${nombre} es un nombre valido. `):console.log(`${nombre} NO es un nombre valido.`);
+
+}
+    
+// nombreReal("")
+// nombreReal("michael oñate,tiene 19.")
+// nombreReal("michael oñate")
+
+
+
+// 20) Programa una función que valide que un texto sea un email válido, pe. miFuncion("jonmircha@gmail.com") devolverá verdadero. 
+
+const emailValido = (email ="")=>{
+if(!email) return console.info("El campo está vacío, ingresa una frase");
+if(typeof email !=="string") return console.info(`El valor "${email}" no es una cadena de text, ingresa la informacion de nuevo, porfavor.`);
+
+
+const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i.test(email)
+
+return (regex) ?console.log(`${email} es un email valido`):console.log(`${email} NO es un email valido`);
 }
 
-calculateYear()
-calculateYear("")
-calculateYear(new Date(2020,10,8))
-calculateYear(new Date())
+// emailValido("joelenciso08@outlook.com")
+// emailValido("joel,enciso08@outlook.co")
+// emailValido("joElenciso08@outlook.co")
+
+
+
+
+
+// Combinando nombre y Email ejercicio
+
+const validarPatron =(cadena ="" , patron ="")=>{
+    if(!cadena) return console.info("El campo está vacío, ingresa una frase");
+    if(typeof cadena !=="string") return console.info(`El valor "${cadena}" no es una cadena de text, ingresa la informacion de nuevo, porfavor.`);
+   
+    if(patron === undefined) return console.info("El campo está vacío, ingresa una frase");
+    if(!(patron instanceof RegExp)) return console.info(`El valor "${patron}" no es una cadena de texto, ingresa la informacion de nuevo, porfavor.`);
+   
+        const regEx = patron.test(cadena)
+            return (regEx) ? console.log(`${cadena} cumple con el patron ingresado`):console.log(`${cadena} No cumple con el patron ingresado.`);
+
+}
+
+validarPatron("joel Enciso", /^[a-zA-ZÑñÀaeiouáéíóúü\s']+$/g)
+validarPatron("joelenciso@gmail.com",/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i)

@@ -1,62 +1,109 @@
 /**
- 
-12) Programa una función que determine si un número es 
-primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true.
-
-13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar.
-14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F.
- */
+15) Programa una función para convertir números de base binaria a decimal y viceversa, pe. miFuncion(100,2) devolverá 4 base 10.
+16) Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800.
+17) Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020). */
 
 
-// Programa una función que determine si un número es 
-// primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true.
+// Programa una función para convertir números de base binaria a decimal y viceversa, pe. miFuncion(100,2) devolverá 4 base 10.
+
+const binarioaDecimal = (numero = undefined,base = undefined) => {
+    if(numero === undefined) return console.error("El numero Binario ingresado No es valido, Ingreselo de nuevo.");    
+
+    if(typeof numero !== "number") return console.error(`El Numero binario "${numero}" No es valido, Ingreselo de nuevo.`);  
+    if(base === undefined) return console.error("La base no esta definida, Ingreselo de nuevo.");    
+
+    if(typeof base !== "number") return console.error(`la Base "${base}" No es valido, ingreselo de nuevo`);
+
+// Function binaria 
+// if (base !== 2 && base !== 10) {
+//     console.error("La base ingresada no es válida. Por favor, ingresa 2 para binario o 10 para decimal.");
+//     return;
+// }
+
+if (base === 2) {
+    console.info(`El número ${numero} base ${base} = ${parseInt(numero, base)} base 10`);
+}else if(base === 10){
+    console.info(`El número ${base} base ${numero} = ${numero.toString(base)} base 2`);
+}
+}
+binarioaDecimal()
+binarioaDecimal("2");
+binarioaDecimal(100)
+binarioaDecimal(100,"2")
+binarioaDecimal(100,2)
+binarioaDecimal(20,10)
 
 
-const esPrimo =(numero = undefined) =>{
 
-    if (!numero) return console.info("No es un número valido");
-    // typeOf nos ayuda a identificar el tipo de datos que estamos comparando 
-    if(typeof numero !== "number") return console.log(`El valor ${numero} ingresado No es un numero`);
 
-    let esPrimo = 2
-    for (let i = esPrimo; i <= Math.floor(Math.sqrt(numero)); i++) {
-        if(numero % esPrimo  === 0) return false
-        
-    }
-    return true
+
+
+// Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada,
+//  pe. miFuncion(1000, 20) devolverá 800.
+
+const input = (monto = undefined , descuento = 0) => {
+    
+    // Validations
+
+if(monto === undefined) return console.error("El monto No es valido, Ingreselo de nuevo.");    
+
+if(typeof monto !== "number") return console.error(`El monto "${monto}" No es valido, Ingreselo de nuevo.`);    
+
+if(monto === 0) return console.error("no puede ser 0 el monto");
+
+
+if(Math.sign(monto) === -1) return console.error("No puede se negativo el monto, ingrese uno nuevo");
+
+if(typeof descuento !== "number") return console.error(`El valor ${descuento} NO ES NUMERO Ingresa de nuevo`);
+
+
+
+    // Funcion descuento
+    return console.log(`${monto} - ${descuento} % = ${(monto*descuento)/100}`);
 }
 
-esPrimo("w")
-console.log(esPrimo(9))
+input()
+input("200")
+input(0)
+input(-1)
+input(10,"2")
+input(35)
+input(350.000,50)
 
 
 
 
-// 13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar.
-
-    const parOimpar = (numero = undefined) => {
-        // isNaN comprueba si es un numero valido
-        if (!numero || isNaN(numero)) return console.info("No es un número valido");
-        (numero % 2 === 0) ?console.log(`${numero} es un numero par`): console.log(`${numero} es un numero impar`)
 
 
-    }
+
+
+// Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy,
+//  pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020). */
+
+const calculateYear = (fecha = undefined ) =>{
     
-    parOimpar(4)
-    
+    if(fecha === undefined) return console.log("Invalid DateType.");
+
+    // Vamos a validar con el operador instanceOf, el cual nos ayuuda a validar las instancias o prototype
+    if(!(fecha instanceof Date)) return console.log("Invalid Date added");
+
+    // Function 
+
+    // Aqui se creo la variable en milisegundos
+    let newDate =new Date().getTime() - fecha.getTime()
+    // crear variable con el tiempo que deseamos expresar ( esta expresado en un dia , segundos, minutos, hora, dia, y año)
+    yearMS= 1000 * 60 * 60 * 24 * 365
+    yearHumans = Math.floor(newDate/yearMS);
 
 
+    return (Math.sign(yearHumans)===-1) 
+    ? console.info(`falta ${Math.abs(yearHumans)} años para el ${fecha.getFullYear()}.`)
+    :(Math.sign(yearHumans)===1) 
+    ? console.info(`Han pasado ${yearHumans} años , desde ${fecha.getFullYear()}`)
+    :console.info(`NO hay diferencias, estamos en el año actual ${fecha.getFullYear()}`);
+}
 
-
-    // 14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F.
-
-    const convertirTemperatura = (valor = undefined, unidad = "") => {
-
-        if (!valor || unidad === undefined) return console.log("Pls add a valid information");
-        
-        let = result = (valor *9/5)+32 ||(valor - 32)*5/9
-        if (unidad.toUpperCase()=== "C") return console.log(`${valor} ${unidad} = ${result} F`);
-        if (unidad.toUpperCase()=== "F") return console.log(`${valor} ${unidad} = ${result} C`);
-    }
-convertirTemperatura(20,"C")
-convertirTemperatura()
+calculateYear()
+calculateYear("")
+calculateYear(new Date(2020,10,8))
+calculateYear(new Date())
