@@ -3,6 +3,68 @@ const xboxSerieX = ["ForzaHorizon 4","Fornite", "FarCry5","Mortal Kombat","Call 
 let Xbox360 = ["Gear of war 1","Gear of war 2","Gear of war 3","HALO Infinite","DIABLO II",]
 const classic = ["God Of War","Spider-Man","The witcher"];
 
+
+const videoGames =[{
+    Company:"Ubisoft",
+    Category: "Arcade",
+    Name:"Assassins Creed Origins",
+    year: "2021",
+    R:"15+",
+},
+{
+    
+    Company:"Activision Blizard",
+    Category: "Action",
+    Name:"Call of Dutry MW2",
+    year: "2008",
+    R:"18+"
+
+
+},
+{
+    
+    Company:"Epic games",
+    Category: "RPG",
+    Name:"Fornite",
+    year: "2021",
+    R:"12+"
+
+
+},
+{
+    Company:"Ubisoft",
+    Category: "Adventure",
+    Name:"Prince of persia the warrior within",
+    year: "2008",
+    R:"18+"
+
+
+},
+{
+    Company:"Ubisoft",
+    Category: "Arcade ",
+    Category: "Adventure",
+    Name:"FarCry 5",
+    year: "2020",
+    R:"18+"
+
+
+},
+{
+    Company:"CAPCOM",
+    Category: "Arcade ",
+    Category: "Adventure",
+    Name:"resident Evil 5",
+    year: "2023",
+    R:"18+"
+
+
+}
+]
+
+
+
+
 // metodo contact 
 const consoleGame = xboxSerieX.concat(Xbox360);
 // concatena los arrays unificandolos en uno se debe crear un VAR 
@@ -97,9 +159,9 @@ console.log(obj);
 // // DOM y function to show on browser
 
 
-showDown("Array1",copyClassic)
-showDown("Array2",operador)
-showDown("Array3",nuevoValor)
+showDown("Array1",videoGames)
+// showDown("Array2",operador)
+// showDown("Array3",nuevoValor)
 
 
 
