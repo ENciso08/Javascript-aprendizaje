@@ -149,7 +149,7 @@ saludar(){
    }
 
    ladrar(){
-      console.log("WOFF WOFF");
+      console.log("WOF WOFF");
    }
 
    // un metodo estatico se puede ejecutar sin encesidad de instanciar la clase .
